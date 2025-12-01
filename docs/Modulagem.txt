@@ -1,0 +1,37 @@
+MeuRPGMapGen/
+├── assets/                 # Texturas, fontes, ícones, arquivos de configuração (.json)
+├── build/                  # Onde o CMake gera os binários (não versionar no git)
+├── docs/                   # Documentação do projeto ou rascunhos de design
+├── src/                    # Todo o seu código fonte
+│   ├── core/               # O "motor" da aplicação
+│   │   ├── Application.cpp # Loop principal, inicialização da janela
+│   │   └── Input.cpp       # Abstração de input (Teclado/Mouse)
+│   │
+│   ├── map/                # A Lógica do Mapa (O "Model")
+│   │   ├── Tile.h          # Struct do Tile (id, colisão, etc)
+│   │   ├── MapData.cpp     # A classe que segura o grid (std::vector<Tile>)
+│   │   └── MapIO.cpp       # Salvar/Carregar (JSON ou Binário)
+│   │
+│   ├── generators/         # Algoritmos de Geração Procedural
+│   │   ├── Generator.h     # Interface base (classe abstrata)
+│   │   ├── PerlinGen.cpp   # Gerador de terreno natural
+│   │   ├── BSPGen.cpp      # Gerador de masmorras (quartos)
+│   │   └── CellularGen.cpp # Gerador de cavernas
+│   │
+│   ├── render/             # Código gráfico (Raylib wrapper)
+│   │   ├── MapRenderer.cpp # Sabe como desenhar o grid na tela
+│   │   └── CameraCtrl.cpp  # Controle de Zoom e Pan da câmera
+│   │
+│   ├── ui/                 # Código da Interface (ImGui)
+│   │   ├── EditorUI.cpp    # Janelas flutuantes, sliders, botões
+│   │   └── Theme.cpp       # Estilização do ImGui
+│   │
+│   └── main.cpp            # Ponto de entrada (apenas chama o Application)
+│
+├── vendor/                 # Bibliotecas de terceiros (código que não é seu)
+│   ├── raylib/
+│   ├── imgui/
+│   └── json/
+│
+├── CMakeLists.txt          # Configuração de build
+└── .gitignore              # Ignorar pasta build/, .vscode/, etc.
